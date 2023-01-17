@@ -40,20 +40,14 @@ export const Contentful = () => {
       <h1>{response?.fields?.name ?? response?.fields?.address ?? 'Страны'}</h1>
       <ul>
         {items.map((item, index) => (
-          <li key={item?.id || index}>
-            {item?.fields?.name ? (
-              <Link to={`${pathname}/${item?.sys?.id}`}>
-                {item?.fields?.name}
-              </Link>
-            ) : (
-              <>
-                {item?.fields?.address}
-                {documentToReactComponents(item?.fields?.howTo)}
-              </>
-            )}
+          <li key={item?.sys?.id || index}>
+            <Link to={`${pathname}/${item?.sys?.id}`}>
+              {item?.fields?.name ?? item?.fields?.address}
+            </Link>
           </li>
         ))}
       </ul>
+      {documentToReactComponents(response?.fields?.howTo)}
     </>
   )
 };

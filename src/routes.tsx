@@ -1,7 +1,6 @@
 import { Layout } from "./components/Layout";
 import { Home } from "./components/Home";
 import { Contentful } from "./components/Contentful";
-import { Prismic } from "./components/Prismic";
 import { Strapi } from "./components/Strapi";
 
 export const getRoutes = () => [
@@ -33,11 +32,23 @@ export const getRoutes = () => [
         element: <Contentful />,
       },
       {
-        path: "/prismic",
-        element: <Prismic />,
+        path: "/strapi",
+        element: <Strapi />,
       },
       {
-        path: "/strapi",
+        path: "/strapi/:countryId",
+        element: <Strapi />,
+      },
+      {
+        path: "/strapi/:countryId/:regionId",
+        element: <Strapi />,
+      },
+      {
+        path: "/strapi/:countryId/:regionId/:cityId",
+        element: <Strapi />,
+      },
+      {
+        path: "/strapi/:countryId/:regionId/:cityId/:branchId",
         element: <Strapi />,
       },
     ],

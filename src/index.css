@@ -110,3 +110,30 @@ button:focus-visible {
 .read-the-docs {
   color: #888;
 }
+
+nav > ul {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  list-style: none;
+  gap: 20px;
+}
+
+nav > ul > li {
+  position: relative;
+}
+
+nav > ul > li:before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  transform: translateY(-50%) translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff;
+}
