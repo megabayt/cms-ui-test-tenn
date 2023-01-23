@@ -1,8 +1,11 @@
+import { QueryClientProvider } from './components/ClientProvider'
 import { RouterProvider } from './components/RouterProvider'
 
 function App() {
   return (
-    <RouterProvider />
+    <QueryClientProvider>
+      <RouterProvider />
+    </QueryClientProvider>
   )
 }
 
