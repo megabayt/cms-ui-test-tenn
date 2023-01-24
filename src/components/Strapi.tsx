@@ -31,7 +31,7 @@ export const Strapi = () => {
   }
 
   return (
-    <Layout {...data} lang={lang || 'ru'} onChangeLang={(lang) => setSearchParams({ lang })} />
+    <Layout {...data} lang={lang || 'ru'} onChangeLang={(lang) => setSearchParams(prev => ({ ...prev, lang }))} />
   );
 }
 

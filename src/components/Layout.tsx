@@ -1,7 +1,8 @@
 import React from 'react';
 import { Layout as LayoutAntd, Row, Col, Card, Typography } from 'antd';
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-const { Header, Footer, Sider, Content } = LayoutAntd;
+const { Header, Sider, Content } = LayoutAntd;
 const { Title, Text, Link } = Typography;
 
 const headerStyle: React.CSSProperties = {
@@ -60,7 +61,7 @@ export const Layout = ({
     time: string;
     link: string;
   };
-  restContent?: string;
+  restContent?: any;
   lang: string;
   onChangeLang: (newLang: 'ru' | 'en') => void;
 }) => {
@@ -122,7 +123,11 @@ export const Layout = ({
               <Title level={3}>
                 {lang === 'ru' ? 'Остальной контент' : 'Other content'}
               </Title>
-              <div dangerouslySetInnerHTML={{ __html: restContent ?? '' }} />
+              {typeof restContent === 'string' ? (
+                <div dangerouslySetInnerHTML={{ __html: restContent ?? '' }} />
+              ) : (
+                documentToReactComponents(restContent)
+              )}
             </Col>
           </Row>
         </Content>
