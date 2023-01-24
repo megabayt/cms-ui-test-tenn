@@ -10,21 +10,21 @@ export const Strapi = () => {
 
   const { data, isLoading, isError } = useQuery(['strapi-data', lang], () => getData(lang ?? 'ru'));
 
-  if (isError || !data) {
-    return (
-      <Row align="middle" justify="center" style={{ height: '100vh' }}>
-        <Col span={1}>
-          Произошла ошибка
-        </Col>
-      </Row>
-    );
-  }
-
   if (isLoading) {
     return (
       <Row align="middle" justify="center" style={{ height: '100vh' }}>
         <Col span={1}>
           <Spin size='large' />
+        </Col>
+      </Row>
+    );
+  }
+  
+  if (isError || !data) {
+    return (
+      <Row align="middle" justify="center" style={{ height: '100vh' }}>
+        <Col span={1}>
+          Произошла ошибка
         </Col>
       </Row>
     );
